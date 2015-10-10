@@ -44,6 +44,13 @@
 		{{/each}}
 	</div>
 
+	<div class="popup" id="oneActShow">
+		<button class="closePopups">close</button>
+		{{#each actToShow}}
+			{{> act}}
+		{{/each}}
+	</div>
+
 </body>
 
 <template name="act">
@@ -51,8 +58,8 @@
 		<header>{{placeName}}</header>
 		<footer>{{period}}</footer>
 		<p>{{disc}}</p>
-		<div id="delete">
-			delete this
+		<div class="delete">
+			<i class="fa fa-times"></i>
 		</div>
 	</article>
 </template>
