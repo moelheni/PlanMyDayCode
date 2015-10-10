@@ -50,6 +50,13 @@
  	padding: 3px;
  }
 
+#addPlaceForm input,#addPlaceForm textarea{
+	border: solid 1px #777;
+	box-shadow: none;
+	border-radius: 3px;
+	padding: 5px;
+}
+
  button:hover{
  	background-color: white;
  	color: black;

@@ -114,7 +114,7 @@ if (Meteor.isClient) {
         y:y,
         createdAt: new Date() // current time
       });
- 
+      $(".popup").fadeOut();
     },
     "click #planMyDayButton" : function(event) {
        document.getElementById("planMyDayHolder").style.display = "block";
@@ -210,7 +210,7 @@ function showPlan(places){
 
         }
         Session.set("thePlan",thePlan);
-         $(".popup").fadeOut(function(){
-            $("#PlanHolder").fadeIn();
+         $(".popup").hide(0,function(){
+            $("#PlanHolder").show(0);
          });
 }
