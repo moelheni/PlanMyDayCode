@@ -1,0 +1,61 @@
+ body{
+ 	font-family: 'PT Sans', sans-serif;
+ }
+ #map { 
+ 	position:fixed;
+ 	width:100%;
+ 	height: 100%;
+ 	top: 0;
+ 	left: 0;
+ 	z-index: 0;
+ }
+
+ .popup{
+ 	display: none;
+ 	position: fixed;
+ 	top: 30px;
+ 	left: 20%;
+ 	width: 60%;
+ 	background-color: white;
+ 	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	z-index: 1;
+	padding: 30px;
+ }
+
+ #main-header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+ }
+
+ button{
+ 	background: none;
+ 	border:solid 1px white;
+ 	box-shadow: none;
+	color: white;
+	float: right;
+	padding: 10px 12px;
+	margin: 5px;
+	cursor: pointer;
+	transition:all .3s;
+ }
+ .closePopups{
+ 	border:solid 1px black;
+ 	color: black;
+ 	position: absolute;
+ 	top: 5px;
+ 	right: 5px;
+ 	padding: 3px;
+ }
+
+ button:hover{
+ 	background-color: white;
+ 	color: black;
+ }
+
+  .closePopups:hover{
+  	background-color:black;
+ 	color: white;
+  }

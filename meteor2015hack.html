@@ -1,0 +1,91 @@
+<head>
+  <title>meteor2015hack</title>
+  <link href='https://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+	<header id="main-header">
+		<img src="logo.png">
+		<button id="addAPlaceButton"><i class="fa fa-plus"></i> Right-click in  a place to Add it</button>
+		<button id="planMyDayButton"><i class="fa fa-clock-o"></i> Plan my day</button>
+	</header>
+	<div id="map">
+		{{> googleMap name="exampleMap" options=exampleMapOptions}}
+	</div>
+	<div class="popup" id="planMyDayHolder">
+		<button class="closePopups">close</button>
+	  	<form id="planMyDayForm">
+	  		{{> whatsWanted}}
+
+	  		<input type="submit" value="Plan my day">
+	  	</form>
+	</div>
+	<div class="popup" id="addPlaceFormHolder">
+		<button class="closePopups">close</button>
+		<form id="addPlaceForm">
+			<input placeholder="Place name" name="placeName"> <br>
+			<textarea placeholder="Discreption" name="disc"></textarea> <br>
+			<input type="file"> <br>
+			<input type="range" name="time" min="0" max="10">
+			<div class="label_form">
+	  			Average time to passe here
+	  		</div>
+			{{> whatsWanted}}
+			<input type="hidden" name="lat" id="lat">
+			<input type="hidden" name="lng" id="lng">
+	  		<input type="submit" value="Add this place">
+		</form>
+	</div>
+	
+	<div class="popup" id="PlanHolder">
+		<button class="closePopups">close</button>
+		{{#each plans}}
+			{{> act}}
+		{{/each}}
+	</div>
+
+</body>
+
+<template name="act">
+	<article class="act">
+		<header>{{placeName}}</header>
+		<footer>{{period}}</footer>
+		<p>{{disc}}</p>
+		<div id="delete">
+			delete this
+		</div>
+	</article>
+</template>
+
+<template name="whatsWanted">
+			<div class="label_form">
+	  			Sport
+	  		</div>
+	  		<div class="input">
+	  			<input type="range" name="sport" min="0" max="10">
+	  		</div>
+	  		<div class="label_form">
+	  			Music
+	  		</div>
+	  		<div class="input">
+	  			<input type="range" name="music" min="0" max="10">
+	  		</div>
+	  		<div class="label_form">
+	  			Cinema
+	  		</div>
+	  		<div class="input">
+	  			<input type="range" name="cinema" min="0" max="10">
+	  		</div>
+	  		<div class="label_form">
+	  			Theatre
+	  		</div>
+	  		<div class="input">
+	  			<input type="range" name="theater" min="0" max="10">
+	  		</div>
+	  		<div class="label_form">
+	  			Food
+	  		</div>
+	  		<div class="input">
+	  			<input type="range" name="food" min="0" max="10">
+	  		</div>
+	  	</template>
