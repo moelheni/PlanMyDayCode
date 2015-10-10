@@ -25,7 +25,7 @@
 		<form id="addPlaceForm">
 			<input placeholder="Place name" name="placeName"> <br>
 			<textarea placeholder="Discreption" name="disc"></textarea> <br>
-			<input type="file"> <br>
+			<input type="file" id="filePicker"> <br>
 			<div class="label_form">
 	  			Average time to passe here
 	  		</div>
@@ -58,6 +58,9 @@
 	<article class="act">
 		<header>{{placeName}}</header>
 		<footer>{{period}}</footer>
+		<section>
+			<img src="{{image}}" style="width:100%;">
+		</section>
 		<p>{{disc}}</p>
 		<div class="delete">
 			<i class="fa fa-times"></i>

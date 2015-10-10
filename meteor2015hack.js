@@ -1,3 +1,11 @@
+/*
+*
+* TODO : add acounts
+* 
+*/
+
+
+
 Places = new Mongo.Collection("places");
 console.log(Places.find());
 thePlan = [];
@@ -17,9 +25,36 @@ function handlePos(pos){
   Y = pos.coords.longitude;
 }
 
+image = {};
 
 if (Meteor.isClient) {
   Meteor.startup(function() {
+    
+      var handleFileSelect = function(evt) {
+          var files = evt.target.files;
+          var file = files[0];
+          console.log(file);
+          if (files && file) {
+              var reader = new FileReader();
+
+              reader.onload = function(readerEvt) {
+                  var binaryString = readerEvt.target.result;
+                  console.log(readerEvt);
+                  image = "data:"+file.type+";base64,"+btoa(binaryString);
+              };
+
+              reader.readAsBinaryString(file);
+          }
+      };
+
+      if (window.File && window.FileReader && window.FileList && window.Blob) {
+          document.getElementById('filePicker').addEventListener('change', handleFileSelect, false);
+      } else {
+          alert('The File APIs are not fully supported in this browser.');
+      }
+
+
+
     GoogleMaps.load();
   });
   Template.body.helpers({
@@ -88,6 +123,8 @@ if (Meteor.isClient) {
       // Prevent default browser form submit
       event.preventDefault();
  
+      
+      console.log(image);
       // Get value from form element
       var placeName = event.target.placeName.value;
       var disc      = event.target.disc.value;
@@ -105,6 +142,7 @@ if (Meteor.isClient) {
         placeName: placeName,
         disc: disc,
         time: time,
+        image:image,
         sport: sport,
         music: music,
         cinema: cinema,
@@ -198,12 +236,13 @@ function showPlan(places){
             marker.setClickable(true);
             Markers.push(marker);
 
-            $thisPlan = thePlan[i];
-            marker.addListener("click",function(){
-              console.log("mm");
-              Session.set("theAct",[$thisPlan]);
-              $("#oneActShow").fadeIn();
-            });
+            (function($thisPlan){
+              marker.addListener("click",function(){
+                console.log("mm");
+                Session.set("theAct",[$thisPlan]);
+                $("#oneActShow").fadeIn();
+              });
+            })(thePlan[i]);
             console.log(marker);
             thePlan[i].period = t +" -> " + (t+parseInt(thePlan[i].time));
             t = t+parseInt(thePlan[i].time);
