@@ -122,7 +122,7 @@ if (Meteor.isClient) {
     "click .closePopups" : function(){
       $(".popup").fadeOut();
     },
-    "submit planMyDayForm" : function(event){
+    "submit #planMyDayForm" : function(event){
         event.preventDefault();
         start = 8;
         end   = 22;
