@@ -14,15 +14,16 @@
 	</div>
 	<div class="popup" id="planMyDayHolder">
 		<button type="button" class="close closePopups" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
+		<div class="titleForm">What's you like the most?</div>
 	  	<form id="planMyDayForm">
 	  		{{> whatsWanted}}
 
-	  		<input class="btn btn-default" type="submit" value="Plan my day">
+	  		<input class="btn btn-success" type="submit" value="Plan my day">
 	  	</form>
 	</div>
 	<div class="popup" id="addPlaceFormHolder">
 		<button type="button" class="close closePopups" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<div class="titleForm">Give us some informations about this place</div>
 		<form id="addPlaceForm">
 			<input class="form-control" placeholder="Place name" name="placeName"> <br>
 			<textarea class="form-control" placeholder="Discreption" name="disc"></textarea> <br>
@@ -30,12 +31,12 @@
 			<div class="label_form">
 	  			Average time to passe here
 	  		</div>
-			<input class="form-control" type="range" name="time" min="0" max="10">
-			
+			<input type="number" name="time" min="0" max="10"> hours
+			<div class="titleForm" style="margin-top:30px">What's a person should like to come here ?</div>
 			{{> whatsWanted}}
 			<input type="hidden" name="lat" id="lat">
 			<input type="hidden" name="lng" id="lng">
-	  		<input  lass="btn btn-default" type="submit" value="Add this place">
+	  		<input  class="btn btn-success" type="submit" value="Add this place">
 		</form>
 	</div>
 	

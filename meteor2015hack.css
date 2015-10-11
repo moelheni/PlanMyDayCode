@@ -21,7 +21,7 @@
  	background-color: white;
  	box-shadow: 0 0 10px rgba(0,0,0,0.3);
 	z-index: 1;
-	padding: 30px;
+	padding: 30px 30px 70px 30px;
  }
 
  #main-header{
@@ -32,6 +32,20 @@
 	z-index: 1;
  }
 
+ .titleForm{
+ 	font-size: 2em;
+	font-weight: bolder;
+	text-align: center;
+	margin-bottom: 56px;
+ }
+
+form .btn{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	border-radius: 0 !important;
+}
  .name{
  	font-size: 1.1em;
  	font-weight: bold;
