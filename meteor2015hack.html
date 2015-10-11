@@ -6,47 +6,48 @@
 <body>
 	<header id="main-header">
 		<img src="logo.png">
-		<button id="addAPlaceButton"><i class="fa fa-plus"></i> Right-click in  a place to Add it</button>
-		<button id="planMyDayButton"><i class="fa fa-clock-o"></i> Plan my day</button>
+		<button id="addAPlaceButton" class="btn btn-default btn-lg righty" disabled="disabled"><i class="fa fa-plus"></i> Right-click in  a place to Add it</button>
+		<button id="planMyDayButton" class="btn btn-default btn-lg righty"><i class="fa fa-clock-o"></i> Plan my day</button>
 	</header>
 	<div id="map">
 		{{> googleMap name="exampleMap" options=exampleMapOptions}}
 	</div>
 	<div class="popup" id="planMyDayHolder">
-		<button class="closePopups">close</button>
+		<button type="button" class="close closePopups" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
 	  	<form id="planMyDayForm">
 	  		{{> whatsWanted}}
 
-	  		<input type="submit" value="Plan my day">
+	  		<input class="btn btn-default" type="submit" value="Plan my day">
 	  	</form>
 	</div>
 	<div class="popup" id="addPlaceFormHolder">
-		<button class="closePopups">close</button>
+		<button type="button" class="close closePopups" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		<form id="addPlaceForm">
-			<input placeholder="Place name" name="placeName"> <br>
-			<textarea placeholder="Discreption" name="disc"></textarea> <br>
-			<input type="file" id="filePicker"> <br>
+			<input class="form-control" placeholder="Place name" name="placeName"> <br>
+			<textarea class="form-control" placeholder="Discreption" name="disc"></textarea> <br>
+			<input class="form-control" type="file" id="filePicker"> <br>
 			<div class="label_form">
 	  			Average time to passe here
 	  		</div>
-			<input type="range" name="time" min="0" max="10">
+			<input class="form-control" type="range" name="time" min="0" max="10">
 			
 			{{> whatsWanted}}
 			<input type="hidden" name="lat" id="lat">
 			<input type="hidden" name="lng" id="lng">
-	  		<input type="submit" value="Add this place">
+	  		<input  lass="btn btn-default" type="submit" value="Add this place">
 		</form>
 	</div>
 	
 	<div class="popup" id="PlanHolder">
-		<button class="closePopups">close</button>
+		<button type="button" class="close closePopups" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		{{#each plans}}
 			{{> act}}
 		{{/each}}
 	</div>
 
 	<div class="popup" id="oneActShow">
-		<button class="closePopups">close</button>
+		<button type="button" class="close closePopups" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 		{{#each actToShow}}
 			{{> act}}
 		{{/each}}
@@ -55,8 +56,8 @@
 </body>
 
 <template name="act">
-	<article class="act">
-		<header>{{placeName}}</header>
+	<article class="act bg-info">
+		<header class="name">{{placeName}}</header>
 		<footer>{{period}}</footer>
 		<section>
 			<img src="{{image}}" style="width:100%;">
@@ -73,19 +74,19 @@
 	  			Sport
 	  		</div>
 	  		<div class="input">
-	  			<input type="range" name="sport" min="0" max="10">
+	  			<input  type="range" name="sport" min="0" max="10">
 	  		</div>
 	  		<div class="label_form">
 	  			Music
 	  		</div>
 	  		<div class="input">
-	  			<input type="range" name="music" min="0" max="10">
+	  			<input  type="range" name="music" min="0" max="10">
 	  		</div>
 	  		<div class="label_form">
 	  			Cinema
 	  		</div>
 	  		<div class="input">
-	  			<input type="range" name="cinema" min="0" max="10">
+	  			<input  type="range" name="cinema" min="0" max="10">
 	  		</div>
 	  		<div class="label_form">
 	  			Theatre

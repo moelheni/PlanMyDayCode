@@ -4,32 +4,17 @@
 * 
 */
 
-
-
 Places = new Mongo.Collection("places");
 console.log(Places.find());
 thePlan = [];
 DeletedAct = [];
 Markers = [];
 
-/* if (Navigator.geolocation) {
-    Navigator.geolocation.getCurrentPosition(showPosition);
-}else{*/
-  X=30;
-  Y=30;
-/*}*/
-
-
-function handlePos(pos){
-  X = pos.coords.latitude;
-  Y = pos.coords.longitude;
-}
-
 image = {};
 
 if (Meteor.isClient) {
   Meteor.startup(function() {
-    
+       
       var handleFileSelect = function(evt) {
           var files = evt.target.files;
           var file = files[0];
@@ -77,9 +62,11 @@ if (Meteor.isClient) {
               }
           };
           // Map initialization options
+          X=Geolocation.latLng().lat;
+          Y=Geolocation.latLng().lng;
           return {
             center: new google.maps.LatLng(X, Y),
-            zoom: 8
+            zoom: 16
           };
         }
       },
@@ -93,7 +80,22 @@ if (Meteor.isClient) {
   Template.body.onCreated(function() {
   // We can use the `ready` callback to interact with the map API once the map is ready.
     GoogleMaps.ready('exampleMap', function(map) {
-    
+      
+      var marker = new google.maps.Marker({
+              position: {lat: X, lng: Y}
+            });
+            var icon = new google.maps.MarkerImage(
+                    "http://www.iconsdb.com/icons/preview/moth-green/circle-xl.png", //url
+                    new google.maps.Size(50, 50), //size
+                    new google.maps.Point(0,0), //origin
+                    new google.maps.Point(0, 0) //anchor 
+            );
+
+            marker.setMap(GoogleMaps.maps.exampleMap.instance);
+            marker.setTitle("Your position");
+            marker.setIcon(icon);
+
+
       map.instance.addListener('rightclick', function(event) {
         console.log("clicked map");
         document.getElementById("lat").value = event.latLng.J;
@@ -231,8 +233,16 @@ function showPlan(places){
             var marker = new google.maps.Marker({
               position: {lat: parseFloat(thePlan[i].x), lng: parseFloat(thePlan[i].y)}
             });
+            var icon = new google.maps.MarkerImage(
+                    thePlan[i].image, //url
+                    new google.maps.Size(50, 50), //size
+                    new google.maps.Point(0,0), //origin
+                    new google.maps.Point(0, 0) //anchor 
+            );
+
             marker.setMap(GoogleMaps.maps.exampleMap.instance);
             marker.setTitle(thePlan[i].placeName+" : " + t +" -> " + (t+parseInt(thePlan[i].time)));
+            marker.setIcon(icon);
             marker.setClickable(true);
             Markers.push(marker);
 
