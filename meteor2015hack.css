@@ -30,6 +30,9 @@
 	left: 0;
 	width: 100%;
 	z-index: 1;
+	background-color: rgba(0,0,0,0.1);
+	padding: 2px;
+	text-align: center;
  }
 
  .titleForm{
@@ -38,7 +41,11 @@
 	text-align: center;
 	margin-bottom: 56px;
  }
-
+ .btn-lg-w{
+ 	color: white !important;
+ 	border: none !important;
+ 	box-shadow: none !important; 
+ }
 form .btn{
 	position: absolute;
 	bottom: 0;
